@@ -4,7 +4,9 @@
       <el-row>
         <el-col :span="1"> </el-col>
         <el-col :span="8"><div class="grid-text">后台管理系统</div></el-col>
-        <el-col :span="15"><el-button @click="$router.back('/login')">退出</el-button></el-col>
+        <el-col :span="15"
+          ><el-button @click="$router.back('/login')">退出</el-button></el-col
+        >
       </el-row>
     </el-header>
     <el-container>
@@ -27,7 +29,7 @@
               <span slot="title">用户管理</span>
             </template>
             <el-menu-item-group>
-              <el-menu-item index="1-1"
+              <el-menu-item index="1-1" @click="$router.push('/home/userlist')"
                 ><i class="el-icon-menu"></i>用户列表</el-menu-item
               >
             </el-menu-item-group>
@@ -38,10 +40,12 @@
               <span slot="title">权限管理</span>
             </template>
             <el-menu-item-group>
-              <el-menu-item index="2-1"
+              <el-menu-item index="2-1" @click="$router.push('/home/rolesList')"
                 ><i class="el-icon-menu"></i>角色列表</el-menu-item
               >
-              <el-menu-item index="2-2"
+              <el-menu-item
+                index="2-2"
+                @click="$router.push('/home/permissionlist')"
                 ><i class="el-icon-menu"></i>权限列表</el-menu-item
               >
             </el-menu-item-group>
@@ -52,13 +56,15 @@
               <span slot="title">商品管理</span>
             </template>
             <el-menu-item-group>
-              <el-menu-item index="3-1"
+              <el-menu-item index="3-1" @click="$router.push('/home/goodslist')"
                 ><i class="el-icon-menu"></i>商品列表</el-menu-item
               >
-              <el-menu-item index="3-2"
+              <el-menu-item index="3-2" @click="$router.push('/home/classify')"
                 ><i class="el-icon-menu"></i>分类参数</el-menu-item
               >
-              <el-menu-item index="3-3"
+              <el-menu-item
+                index="3-3"
+                @click="$router.push('/home/goodsclassify')"
                 ><i class="el-icon-menu"></i>商品分类</el-menu-item
               >
             </el-menu-item-group>
@@ -69,7 +75,9 @@
               <span slot="title">订单管理</span>
             </template>
             <el-menu-item-group>
-              <el-menu-item index="4-1"
+              <el-menu-item
+                index="4-1"
+                @click="$router.push('/home/order')"
                 ><i class="el-icon-menu"></i>订单列表</el-menu-item
               >
             </el-menu-item-group>
@@ -80,14 +88,19 @@
               <span slot="title">数据统计</span>
             </template>
             <el-menu-item-group>
-              <el-menu-item index="5-1"
+              <el-menu-item
+                index="5-1"
+                @click="$router.push('/home/data')"
                 ><i class="el-icon-menu"></i>数据报表</el-menu-item
               >
             </el-menu-item-group>
           </el-submenu>
         </el-menu>
       </el-aside>
-      <el-main>Main</el-main>
+      <el-main>
+        <!-- 欢迎登录 -->
+        <router-view></router-view>
+      </el-main>
     </el-container>
   </el-container>
 </template>

@@ -31,8 +31,8 @@ export default {
     return {
       loginForm: {
         // 字段名和接口文档保持一致
-        username: '',
-        password: ''
+        username: 'admin',
+        password: '123456'
       },
       rules: {
         username: [
@@ -60,8 +60,13 @@ export default {
           const res = await login(this.loginForm)
           console.log(res)
           // todo 把token存到vuex中，并且持久化localStorage
-
+          this.$store.commit('setUser', res.data.data)
           this.$router.push('/home')
+          this.$message.success('登录成功')
+          // this.$message({
+          //   message: '登录成功',
+          //   type: 'success'
+          // })
         } catch (err) {
           console.log(err)
         }
