@@ -45,12 +45,10 @@
               @click="deletefn(scope.row.id)"
             ></el-button>
             <!-- 删除scope的行相对应id的那一行  实参 -->
-            <!-- 分配角色 -->
             <el-button
               type="warning"
               icon="el-icon-setting"
               size="small"
-              @click="AssignRoles(scope.row)"
             ></el-button>
           </template>
         </el-table-column>
@@ -130,43 +128,12 @@
           <el-button type="primary" @click="add">确 定</el-button>
         </div>
       </el-dialog>
-
-      <!-- 分配角色 -->
-      <el-dialog
-        title="分配角色"
-        :visible.sync="dialogVisible"
-        width="30%"
-        :data="tableData"
-      >
-        <div>当前的用户：{{ role.username }}</div>
-        <div>当前的角色：{{ role.role_name }}</div>
-        <div>
-          <span>分配新角色：</span>
-          <el-select v-model="roleid">
-            <el-option
-              v-for="item in rolelists"
-              :key="item.id"
-              :label="item.roleName"
-              :value="item.id"
-            >
-            </el-option>
-          </el-select>
-        </div>
-
-        <span slot="footer" class="dialog-footer">
-          <el-button @click="dialogVisible = false">取 消</el-button>
-          <el-button type="primary" @click="dialogVisible = false"
-            >确 定</el-button
-          >
-        </span>
-      </el-dialog>
     </div>
   </div>
 </template>
 
 <script>
 import { UserAdmin, UserState, EditUserData, AddUser, DeleteUser } from '@/api/user'
-import { roleList } from '@/api/role'
 export default {
   created () {
     this.UserAdmin()
@@ -185,7 +152,6 @@ export default {
 
       dialogFormVisible: false,
       adddialogFormVisible: false,
-      dialogVisible: false,
 
       formLabelWidth: '120px',
       rules: {
@@ -207,10 +173,7 @@ export default {
         password: '',
         email: '',
         mobile: ''
-      },
-      role: {},
-      rolelists: [],
-      roleid: ''
+      }
     }
   },
   methods: {
@@ -303,14 +266,6 @@ export default {
           message: '已取消删除'
         })
       })
-    },
-    // 分配角色
-    async AssignRoles (row) {
-      this.dialogVisible = true
-      this.role = row
-      const res = await roleList()
-      console.log(res)
-      this.rolelists = res.data.data
     }
   },
   computed: {},

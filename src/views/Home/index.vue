@@ -4,9 +4,7 @@
       <el-row>
         <el-col :span="1"> </el-col>
         <el-col :span="8"><div class="grid-text">后台管理系统</div></el-col>
-        <el-col :span="15"
-          ><el-button @click="$router.back('/login')">退出</el-button></el-col
-        >
+        <el-col :span="15"><el-button @click="logout">退出</el-button></el-col>
       </el-row>
     </el-header>
     <el-container>
@@ -75,9 +73,7 @@
               <span slot="title">订单管理</span>
             </template>
             <el-menu-item-group>
-              <el-menu-item
-                index="4-1"
-                @click="$router.push('/home/order')"
+              <el-menu-item index="4-1" @click="$router.push('/home/order')"
                 ><i class="el-icon-menu"></i>订单列表</el-menu-item
               >
             </el-menu-item-group>
@@ -88,9 +84,7 @@
               <span slot="title">数据统计</span>
             </template>
             <el-menu-item-group>
-              <el-menu-item
-                index="5-1"
-                @click="$router.push('/home/data')"
+              <el-menu-item index="5-1" @click="$router.push('/home/data')"
                 ><i class="el-icon-menu"></i>数据报表</el-menu-item
               >
             </el-menu-item-group>
@@ -119,6 +113,10 @@ export default {
     },
     handleClose (key, keyPath) {
       console.log(key, keyPath)
+    },
+    logout () {
+      this.$router.push('/login')
+      this.$store.commit('setUser', '')
     }
   },
   computed: {},
