@@ -9,8 +9,8 @@
 
     <!-- 内容区域 -->
     <div class="content">
-      <el-table :data="list">
-        <el-table-column label="#" prop="id"></el-table-column>
+      <el-table :data="list" border>
+        <el-table-column label="#" prop="id" width="100px"></el-table-column>
         <el-table-column label="权限名称" prop="authName"></el-table-column>
         <el-table-column label="路径" prop="path"></el-table-column>
         <el-table-column label="权限等级">
@@ -38,9 +38,7 @@ export default {
     }
   },
   methods: {
-    fn (data) {
-      console.log(data)
-    }
+
   },
   computed: {},
   watch: {},
@@ -63,4 +61,5 @@ export default {
     padding: 20px;
   }
 }
+
 </style>

@@ -5,3 +5,13 @@ export const roleList = () => {
     url: 'roles'
   })
 }
+
+export const roleAuthorize = (id, rids) => {
+  return request({
+    url: `roles/${id}/rights`,
+    method: 'POST',
+    data: {
+      rids
+    }
+  })
+}

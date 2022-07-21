@@ -5,3 +5,9 @@ export const permissionList = () => {
     url: `rights/${type}`
   })
 }
+export const permissionTree = () => {
+  const type = 'tree'
+  return request({
+    url: `rights/${type}`
+  })
+}
